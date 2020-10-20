@@ -1,11 +1,11 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 use strict;
 use warnings;
 use List::MoreUtils qw{uniq};
 my $in  = $ARGV[0];
 my $pop = $ARGV[1];
 my $reference = $ARGV[2];
-
+die "Usage:$0 [vcf] [popmap] [reference_pop_name]\n" unless @ARGV == 3;
 eval { &main() }; # try catch.
 if ($@) {
     

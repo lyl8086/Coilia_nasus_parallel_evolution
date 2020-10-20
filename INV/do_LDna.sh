@@ -1,27 +1,22 @@
 #!/bin/bash
 vcf="dj.vcf.gz"
-for pop in popmap;
+maf=0.1
+for pop in ALL;
 do
-    out="Three_out"
+    out=$maf
     [ -f "$out/LDna.done" ] && continue # check
     rm -r $out
-    :>$pop.r2.cmd
     :>$pop.LDna.cmd
     mkdir $out
     cut -f1 $pop >$out/sample.id
     for i in `seq 1 24`;
     do
-        echo "vcftools --gzvcf $vcf --keep $out/sample.id --chr LG$i --geno-r2 --out $out/LG$i" >>$pop.r2.cmd
-        echo "Rscript LDna.R $out/LG$i.geno.ld $out/LG$i.LDna $vcf $out/sample.id" >>$pop.LDna.cmd
+        echo "vcftools --maf $maf --gzvcf $vcf --keep $out/sample.id --chr LG$i --geno-r2 -c | bgzip -@2 >$out/LG$i.ld.gz; \
+		Rscript LDna.R $out/LG$i.ld.gz $out/LG$i.LDna $vcf $out/sample.id" >>$pop.LDna.cmd
     done
-    ParaFly -c $pop.r2.cmd -CPU 24
     ParaFly -c $pop.LDna.cmd -CPU 24
     # get PCA
-    for i in $out/*.recode.vcf;
-    do
-        b=${i%".recode.vcf"}
-        vcf_pca.sh $i $b.PCA
-    done
+    Rscript pca_and_boxplot_SeqVarTools.R $out
     touch $out/LDna.done
 done
 
