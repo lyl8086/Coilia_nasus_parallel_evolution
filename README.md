@@ -21,8 +21,31 @@
     ```
     calc_ld_cov.pl snp_index_file samtools_fai_file ld_extent_in_bp
     ```
+    
+  - **vcf_converter.pl**: convert VCF to [BayeScan](http://cmpg.unibe.ch/software/BayeScan/)/[Genepop](https://kimura.univ-montp2.fr/~rousset/Genepop.htm)/[Structure](http://web.stanford.edu/group/pritchardlab/structure.html)/[Arlequin](http://cmpg.unibe.ch/software/arlequin35/)/[BayEnv](https://bitbucket.org/tguenther/bayenv2_public/src/master/)/[BayesAss](https://github.com/brannala/BA3)
+
+    format: 
+
+    > bayescan  -> [BayeScan](http://cmpg.unibe.ch/software/BayeScan/)
+    >
+    > genepop   -> [Genepop](https://kimura.univ-montp2.fr/~rousset/Genepop.htm)
+    >
+    > str              -> [Structure](http://web.stanford.edu/group/pritchardlab/structure.html)
+    >
+    > arp             -> [Arlequin](http://cmpg.unibe.ch/software/arlequin35/)
+    >
+    > bayenv      -> [BayEnv](https://bitbucket.org/tguenther/bayenv2_public/src/master/)
+    >
+    > bayesass   -> [BayesAss](https://github.com/brannala/BA3)
+    >
+    > all               -> all the above
+
+    ```
+    vcf_converter.pl vcf popmap format prefix
+    ```
 
 - Allele_Frequency
+  
   - **calc_FWA.pl**: calculate the frequency of Fresh Water favored Allele (FWA) given a VCF, a [popmap](Examples/popmap) and the name of reference population
   
     ```
