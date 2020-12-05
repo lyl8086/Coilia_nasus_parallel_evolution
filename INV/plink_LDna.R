@@ -51,7 +51,7 @@ for (c in seq(1,length(clusters$clusters))) {
 	c.len  <- length(clusters$clusters[[c]])
 	c.name <- names(clusters$clusters[c])
 	ld     <- ld.sum[c.name, "Median.LD"]
-    if (c.len >= floor(n.loci*0.01) && ld >= 0.3) {
+    if (c.len >= floor(n.loci*0.01) & ld >= 0.3) {
         # out SNP positions
         c.pos.name <- paste(out, c.name, ld, c.len, sep='_')
         write.table(clusters$clusters[c], file=c.pos.name, quote = F, 

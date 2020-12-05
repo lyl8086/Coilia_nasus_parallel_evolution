@@ -137,5 +137,9 @@
 
 ------
 
+**Citation**:
+
+> Zong SB, Li YL, Liu JX, 2020. Genomic architecture of rapid parallel adaptation to fresh water in a wild fish, Molecular Biology and Evolution, https://doi.org/10.1093/molbev/msaa290.
+
 **Questions should be addressed to [Yulong Li](mailto:liyulong12@mails.ucas.ac.cn)**
 
